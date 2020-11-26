@@ -1,0 +1,17 @@
+{% extends 'FirstApp/base.html' %}
+{% block body_block %}
+<h1>Musicians: </h1>
+<ul>
+{% if musician_list %}
+
+{% for x in musician_list %}
+    <li><a href="{% url 'FirstApp:album_list' pk=x.pk %}">{{x.first_name}}&nbsp{{x.last_name}}</a></li>
+{% endfor %}
+{% else %}
+<h3>No Musician in The List</h3>
+{% endif %}
+</ul>
+
+
+
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends 'FirstApp/base.html' %}
+{% block body_block %}
+{% if success %}
+<div class="alert alert-success">
+  <h3>{{success}}</h3>
+
+</div>
+{% elif delete %}
+<div class="alert alert-danger">
+  <h3>{{delete}} </h3>
+
+</div>
+{% else %}
+<form method="POST">
+  {{form.as_p}}
+  <input type="submit" name="submit" value="Update" class="btn btn-info">
+  {% csrf_token %}
+  &nbsp &nbsp &nbsp
+  <a href="{% url 'FirstApp:delete_album' pk=album_info.pk %}" class="btn btn-danger" onclick="return confirm('Are You Sure Delete This Album ??')" >Delete</a>
+
+</form>
+<hr>
+
+
+{% endif %}
+
+{% endblock %}

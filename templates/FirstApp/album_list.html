@@ -1,0 +1,28 @@
+{% extends 'FirstApp/base.html' %}
+{% block body_block %}
+<h2>List Of Album : </h2>
+<h3>Name : {{artist_info.first_name}} {{artist_info.last_name}}</h3>
+<h4>Instrument : {{artist_info.instrument}}</h4>
+<h5>Artist Average Rating : {{artist_rating.num_stars__avg}}</h5>
+<a href="{% url 'FirstApp:edit_artist' pk=artist_info.pk %}"  class="btn btn-primary">Edit</a>
+<hr>
+<h3>List of Album : </h3>
+<table class="table table-striped" style='color:white'>
+  <tr>
+    <th>Album Name</th>
+    <th>release_date</th>
+    <th>Ratting</th>
+    <th>Edit</th>
+
+  </tr>
+  {% for x in album_info %}
+  <tr>
+
+    <td>{{x.name}}</td>
+    <td>{{x.release_date}}</td>
+    <td>{{x.num_stars}}</td>
+    <td><a href="{% url 'FirstApp:edit_album' pk=x.pk %}" style='color:white'>click here</a></td>
+  </tr>
+  {% endfor %}
+</table>
+{% endblock %}
